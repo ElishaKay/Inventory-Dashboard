@@ -14,7 +14,7 @@
         }
 
         .selected {
-            background-color: blue
+            background-color: grey
         }
 
         
@@ -23,19 +23,21 @@
   <body ng-app="myApp">
         <div class="container">
            <div ng-controller="main">
-                
+                <br> 
                 <h2>My Store</h2>
 
                 <a class="btn btn-block btn-info" ng-click="addProductMode = true; updateProductMode = false;">Add Product</a>
 
+                <br>
+
                 <div class="row">
                     <div class="col-md-4" ng-repeat="product in productList">
-                        <div ng-click="setSelected(product.id)" ng-class="{selected: product.id === idSelectedProduct}" class="jumbotron text-muted text-center">
+                        <div ng-click="setSelected(product.id)" ng-class="{selected: product.id === idSelectedProduct}" class="jumbotron text-center">
                             <img ng-src="{{product.image_src}}">
                             <p>{{product.name}}</p>
                             <p>{{product.description}}</p>
                             <p>${{product.price}}</p>
-                            <a class="btn btn-block btn-info" ng-click="removeProduct(product.id)">Remove Product</a>
+                            <a class="btn btn-block btn-danger" ng-click="removeProduct(product.id)">Remove Product</a>
                         </div>
                     </div>
                 </div>
