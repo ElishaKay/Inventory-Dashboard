@@ -23,8 +23,6 @@ angular.module('myApp').controller('main', function ($scope,  $localStorage) {
 
     $scope.updateProductMode = false;
     $scope.addProductMode = false;
-
-    //Mark selected div
     $scope.idSelectedProduct = null;
 
     $scope.setSelected = function (idSelectedProduct) {
@@ -56,7 +54,7 @@ angular.module('myApp').controller('main', function ($scope,  $localStorage) {
             $scope.productList[i].id = i+1;
         }
         $scope.updateProductMode = false;
-        $scope.idSelectedProduct = -2 
+        $scope.idSelectedProduct = 0
     }
     
     $scope.saveProductChanges = function(editedProduct){
