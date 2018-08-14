@@ -10,6 +10,17 @@ angular.module('myApp').controller('main', function ($scope,  $localStorage) {
                             {id: 3, name: "sugar", description: "tasty sugar", price: 18, image_src: "img/sugar.jpg"}]
     }
 
+    $scope.restock = function(){
+        $scope.productList = [{id: 1, name: "coffee", description: " tasty coffee", price: 6, image_src: "img/coffee.jpg"},
+                            {id: 2, name: "chocolate", description: " tasty chocolate", price: 12, image_src: "img/chocolate.jpeg"},
+                            {id: 3, name: "sugar", description: "tasty sugar", price: 18, image_src: "img/sugar.jpg"}]
+        updateLocalStorage();
+    };
+
+    let updateLocalStorage = function(){
+        $localStorage.productList = $scope.productList; 
+    }
+
     $scope.updateProductMode = false;
     $scope.addProductMode = false;
 
@@ -19,8 +30,6 @@ angular.module('myApp').controller('main', function ($scope,  $localStorage) {
     $scope.setSelected = function (idSelectedProduct) {
         $scope.updateProductMode = true;
         $scope.idSelectedProduct = idSelectedProduct;
-
-        //remove update product view if there is any
         $scope.addProductMode = false;
         
         // set the product as selectedProduct for updating product view
@@ -46,7 +55,8 @@ angular.module('myApp').controller('main', function ($scope,  $localStorage) {
         for (i = 0; i < $scope.productList.length; i++) { 
             $scope.productList[i].id = i+1;
         }
-        $scope.idSelectedProduct = null;
+        $scope.updateProductMode = false;
+        $scope.idSelectedProduct = -2 
     }
     
     $scope.saveProductChanges = function(editedProduct){

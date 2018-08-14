@@ -26,9 +26,15 @@
                 <br> 
                 <h2>My Store</h2>
 
+                <a class="btn btn-block btn-info" ng-click="restock()">Refresh Stock</a>
+
+                <br>
+
                 <a class="btn btn-block btn-info" ng-click="addProductMode = true; updateProductMode = false;">Add Product</a>
 
                 <br>
+
+
 
                 <div class="row">
                     <div class="col-md-4" ng-repeat="product in productList">
