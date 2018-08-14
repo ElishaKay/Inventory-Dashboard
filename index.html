@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <title>Angular Starter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.js"></script>
+    <script src="js/lib/ngStorage.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/darkly/bootstrap.min.css">
+    
+    <style>
+        img {
+        max-width: 250px;
+        max-height: 250px;
+        }
+
+        .selected {
+            background-color: blue
+        }
+
+        
+    </style>
+  </head>
+  <body ng-app="myApp">
+        <div class="container">
+           <div ng-controller="main">
+                
+                <h2>My Store</h2>
+
+                <a class="btn btn-block btn-info" ng-click="addProductMode = true; updateProductMode = false;">Add Product</a>
+
+                <div class="row">
+                    <div class="col-md-4" ng-repeat="product in productList">
+                        <div ng-click="setSelected(product.id)" ng-class="{selected: product.id === idSelectedProduct}" class="jumbotron text-muted text-center">
+                            <img ng-src="{{product.image_src}}">
+                            <p>{{product.name}}</p>
+                            <p>{{product.description}}</p>
+                            <p>${{product.price}}</p>
+                            <a class="btn btn-block btn-info" ng-click="removeProduct(product.id)">Remove Product</a>
+                        </div>
+                    </div>
+                </div>
+            
+            
+
+            <div ng-show="addProductMode" class="container">
+                <h2>Add New Product</h2>
+                <div class="form-group">
+                        <label for="name">Product Name</label>
+                        <input type="text" class="form-control" ng-model="formData.name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">Product Description</label>
+                        <input type="text" class="form-control" ng-model="formData.description">
+                    </div>
+
+                    <div class="form-group">
+                            <label for="name">Price</label>
+                            <input type="number" class="form-control" ng-model="formData.price">
+                    </div>
+                    
+                    <div class="form-group row">
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <a class="btn btn-block btn-info" ng-click="addProduct(formData)">Add Product</a>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-show="updateProductMode" class="container">
+                    <h2>Update Product</h2>
+                    <div class="form-group">
+                            <label for="name">Product Name</label>
+                            <input type="text" class="form-control" ng-model="selectedProduct.name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name">Product Description</label>
+                            <input type="text" class="form-control" ng-model="selectedProduct.description">
+                        </div>
+    
+                        <div class="form-group">
+                                <label for="name">Price</label>
+                                <input type="number" class="form-control" ng-model="selectedProduct.price">
+                        </div>
+                        
+                        <div class="form-group row">
+                        <div class="col-xs-6 col-xs-offset-3">
+                            <a class="btn btn-block btn-info" ng-click="saveProductChanges(selectedProduct)">Save Changes</a>
+                        </div>
+                    </div>
+            </div>
+    </div>
+  </body>
+</html>
